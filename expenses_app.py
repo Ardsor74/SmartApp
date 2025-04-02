@@ -8,8 +8,11 @@ def add_expense(expenses, name, amount, category="General"):
 def print_expenses(expenses):
     for category, items in expenses.items():
         print(f"Category: {category}")
-        for name, amount in items.items():
-            print(f"  {name}: ${amount:.2f}")
+        if isinstance(items, dict):  # Verifica se items è un dizionario
+            for name, amount in items.items():
+                print(f"  {name}: ${amount:.2f}")
+        else:  # Gestione del caso in cui items non sia un dizionario
+            print(f"  {category}: ${items:.2f}")
 
 def save_expenses(expenses, filename="expenses.json"):
     with open(filename, "w") as file:

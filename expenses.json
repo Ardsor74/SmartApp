@@ -1,1 +1,1 @@
-{"Coffee": 2.5, "Lunch": 10.0}
+{"Coffee": 2.5, "Lunch": 10.0, "Food": {"Coffee": 2.5, "Lunch": 10.0}, "Transport": {"Uber": 15.0}}
