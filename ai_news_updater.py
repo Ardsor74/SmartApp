@@ -2,11 +2,22 @@ import requests
 from bs4 import BeautifulSoup
 
 def get_sports_news():
-    url = "https://www.espn.com/"
-    response = requests.get(url)
-    soup = BeautifulSoup(response.content, "html.parser")
-    headlines = soup.find_all("h1", class_="headline")
-    return [headline.text for headline in headlines]
+    espn_url = "https://www.espn.com/"
+    bbc_url = "https://www.bbc.com/sport"
+    
+    espn_response = requests.get(espn_url)
+    bbc_response = requests.get(bbc_url)
+    
+    espn_soup = BeautifulSoup(espn_response.content, "html.parser")
+    bbc_soup = BeautifulSoup(bbc_response.content, "html.parser")
+    
+    espn_headlines = espn_soup.find_all("h1", class_="headline")
+    bbc_headlines = bbc_soup.find_all("h3", class_="gs-c-promo-heading__title")
+    
+    espn_news = [headline.text for headline in espn_headlines]
+    bbc_news = [headline.text for headline in bbc_headlines]
+    
+    return espn_news + bbc_news
 
 def update_website(news):
     with open("sports_news.html", "w") as file:

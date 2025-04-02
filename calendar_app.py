@@ -11,6 +11,13 @@ def add_event(events, date, event):
     else:
         events[date] = [event]
 
+def remove_event(events, date, event):
+    if date in events:
+        if event in events[date]:
+            events[date].remove(event)
+            if not events[date]:
+                del events[date]
+
 def print_events(events):
     for date, evts in events.items():
         print(f"{date}:")
