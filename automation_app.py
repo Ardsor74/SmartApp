@@ -1,9 +1,13 @@
-import os
+from plyer import notification
 from twilio.rest import Client
 
 def send_notification(message):
-    # Questo esempio usa il comando 'osascript' per macOS
-    os.system(f'osascript -e \'display notification "{message}"\'')
+    notification.notify(
+        title='Notification',
+        message=message,
+        app_name='SmartApp',
+        timeout=10
+    )
 
 def send_sms(message, to, from_):
     # Le credenziali di Twilio (devi configurarle)
