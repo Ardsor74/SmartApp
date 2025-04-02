@@ -23,7 +23,7 @@ Assicurati di avere Python installato sul tuo computer. Puoi scaricarlo da [pyth
 
 2. Installa le dipendenze richieste:
    ```sh
-   pip install requests beautifulsoup4
+   pip install requests beautifulsoup4 twilio
    ```
 
 ## Utilizzo
